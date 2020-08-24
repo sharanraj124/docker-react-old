@@ -6,7 +6,7 @@ before_install:
   - docker build -t omrsaran/docker-react -f Dockerfile.dev .
 
 script:
-  - docker run -e CI=true omrsaran/docker-react npm run test
+  - docker run omrsaran/docker-react npm run test -- --coverage
 
 deploy:
   provider: elasticbeanstalk
@@ -20,3 +20,5 @@ deploy:
 
   access_key_id: $AWS_ACCESS_KEY
   secret_access_key: $AWS_SECRET_KEY
+
+language: generic
